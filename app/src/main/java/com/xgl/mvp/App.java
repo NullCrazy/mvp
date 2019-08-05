@@ -1,0 +1,18 @@
+package com.xgl.mvp;
+
+import android.app.Application;
+
+import com.alibaba.android.arouter.launcher.ARouter;
+
+/**
+ * @Description: TODO
+ * @Author: xingguo.lei@luckincoffee.com
+ * @Date: 2019-08-05 17:02
+ */
+public class App extends Application {
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        ARouter.init(this);
+    }
+}
