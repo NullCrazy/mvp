@@ -2,8 +2,9 @@ package com.xgl.libs.network.respone;
 
 import com.xgl.libs.network.exception.BusinessException;
 
-import rx.Observable;
-import rx.Subscriber;
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
 
 /**
  * @author xingguolei
@@ -14,21 +15,21 @@ public final class ResponseFlatResult {
     private static final int ERROR_CODE = 0;
 
     public static <T> Observable<T> flatResult(final BaseResponse<T> result) {
-        return Observable.create(new Observable.OnSubscribe<T>() {
+        return Observable.create(new ObservableOnSubscribe<T>() {
             @Override
-            public void call(Subscriber<? super T> subscriber) {
+            public void subscribe(ObservableEmitter<T> emitter) throws Exception {
                 switch (result.getStatus()) {
                     case SUCCESS_CODE:
-                        subscriber.onNext(result.getResult());
+                        emitter.onNext(result.getResult());
                         break;
                     case ERROR_CODE:
-                        subscriber.onError(new BusinessException(result.getMessage()));
+                        emitter.onError(new BusinessException(result.getMessage()));
                         break;
                     default:
-                        subscriber.onError(new BusinessException(result.getMessage()));
+                        emitter.onError(new BusinessException(result.getMessage()));
                         break;
                 }
-                subscriber.onCompleted();
+                emitter.onComplete();
             }
         });
     }

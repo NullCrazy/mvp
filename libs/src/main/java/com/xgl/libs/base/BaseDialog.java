@@ -1,5 +1,7 @@
 package com.xgl.libs.base;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
@@ -33,6 +35,7 @@ public abstract class BaseDialog extends DialogFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         View view = inflater.inflate(R.layout.fragment_base_dialog, container, false);
         mTextTitle = (TextView) view.findViewById(R.id.text_title);
         mFrameContent = (FrameLayout) view.findViewById(R.id.frame_content);
