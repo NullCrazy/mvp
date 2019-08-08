@@ -9,8 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import butterknife.ButterKnife;
-
 /**
  * @author xingguolei
  * @date 2018/10/31
@@ -23,7 +21,6 @@ public abstract class BaseFragment<P extends IMvpPresenter> extends Fragment imp
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(getLayoutId(), container, false);
-        ButterKnife.bind(this, view);
         presenter = createPresenter();
         if (presenter != null) {
             presenter.createView(this);
