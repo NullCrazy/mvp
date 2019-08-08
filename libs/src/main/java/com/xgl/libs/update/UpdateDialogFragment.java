@@ -15,21 +15,14 @@ import android.widget.TextView;
 import com.xgl.libs.R;
 import com.xgl.libs.base.BaseDialog;
 
-import butterknife.ButterKnife;
-
 /**
  * Description :
  * <p/>
  * Created by Chris Kyle on 2017/2/13.
  */
 public final class UpdateDialogFragment extends BaseDialog {
-
-  //  @BindView(R.id.version_name)
     TextView versionName;
-
-  //  @BindView(R.id.update_description)
     TextView description;
-
     OnUpdateDialogListener onUpdateDialogListener;
 
     private static final String K_VERSION_NAME = "version.name";
@@ -88,8 +81,6 @@ public final class UpdateDialogFragment extends BaseDialog {
         super.onViewCreated(view, savedInstanceState);
 
         setStyle(DialogFragment.STYLE_NO_FRAME, 0);
-
-        ButterKnife.bind(this, view);
 
         String versionNameStr = getArguments().getString(K_VERSION_NAME);
         if (!TextUtils.isEmpty(versionNameStr)) {
