@@ -6,6 +6,8 @@ import android.support.annotation.CheckResult;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import com.xgl.libs.widget.Tip;
+
 /**
  * @author xingguo.lei
  * @date 2018/10/31
@@ -91,5 +93,11 @@ public abstract class BaseActivity<P extends IMvpPresenter> extends AppCompatAct
             presenter.destroyView();
         }
     }
+
+    @Override
+    public void showMsg(String msg) {
+        Tip.show(this, msg);
+    }
+
 }
 

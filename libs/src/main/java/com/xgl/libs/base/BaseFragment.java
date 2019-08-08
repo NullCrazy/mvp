@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.xgl.libs.widget.Tip;
+
 /**
  * @author xingguolei
  * @date 2018/10/31
@@ -103,5 +105,10 @@ public abstract class BaseFragment<P extends IMvpPresenter> extends Fragment imp
         if (presenter != null) {
             presenter.destroyView();
         }
+    }
+
+    @Override
+    public void showMsg(String msg) {
+        Tip.show(getActivity(), msg);
     }
 }

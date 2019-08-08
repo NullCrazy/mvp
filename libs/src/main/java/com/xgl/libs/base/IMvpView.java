@@ -15,15 +15,7 @@ public interface IMvpView {
      * @param msg
      */
     @UiThread
-    void showShortMsg(String msg);
-
-    /**
-     * 弹出提示框
-     *
-     * @param msg
-     */
-    @UiThread
-    void showLongMsg(String msg);
+    void showMsg(String msg);
 
     /**
      * 展示等待框
