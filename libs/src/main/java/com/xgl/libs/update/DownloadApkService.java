@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Binder;
 import android.support.v4.app.NotificationCompat.Builder;
+import android.view.Gravity;
 
 import com.xgl.libs.R;
 import com.xgl.libs.utils.StorageUtils;
@@ -98,7 +99,7 @@ public final class DownloadApkService extends IntentService {
 
         } catch (Exception e) {
             cancelNotification();
-            Tip.show(getApplicationContext(), "下载失败!");
+            Tip.show(getApplicationContext(), Gravity.BOTTOM, "下载失败!");
         } finally {
             if (null != out) {
                 try {

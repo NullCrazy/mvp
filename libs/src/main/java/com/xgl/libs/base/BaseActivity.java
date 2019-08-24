@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.CheckResult;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 
 import com.xgl.libs.widget.Tip;
 
@@ -96,7 +97,7 @@ public abstract class BaseActivity<P extends IMvpPresenter> extends AppCompatAct
 
     @Override
     public void showMsg(String msg) {
-        Tip.show(this, msg);
+        Tip.show(this, Gravity.BOTTOM, msg);
     }
 
 }
