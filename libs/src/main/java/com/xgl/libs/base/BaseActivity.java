@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.CheckResult;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 
@@ -16,6 +19,7 @@ import com.xgl.libs.widget.Tip;
  */
 public abstract class BaseActivity<P extends IMvpPresenter> extends AppCompatActivity implements IMvpView {
     protected P presenter;
+    private Fragment lastFragment;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -100,5 +104,34 @@ public abstract class BaseActivity<P extends IMvpPresenter> extends AppCompatAct
         Tip.show(this, Gravity.BOTTOM, msg);
     }
 
+    protected void showFragment(int containerId, Class<? extends Fragment> toClazz) {
+        showFragment(containerId, toClazz, false);
+    }
+
+    protected void showFragment(int containerId, Class<? extends Fragment> toClazz, boolean addBack) {
+        String clazzName = toClazz.getName();
+
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = manager.beginTransaction();
+        Fragment toFragment = manager.findFragmentByTag(clazzName);
+        if (toFragment == null) {
+            toFragment = Fragment.instantiate(this, clazzName);
+        }
+        if (!toFragment.isAdded()) {
+            fragmentTransaction.add(containerId, toFragment, clazzName);
+        } else {
+            if (lastFragment != null) {
+                fragmentTransaction.hide(lastFragment);
+            }
+            fragmentTransaction.show(toFragment);
+        }
+
+        if (addBack) {
+            fragmentTransaction.addToBackStack(clazzName).commitAllowingStateLoss();
+        } else {
+            fragmentTransaction.commitAllowingStateLoss();
+        }
+        lastFragment = toFragment;
+    }
 }
 
