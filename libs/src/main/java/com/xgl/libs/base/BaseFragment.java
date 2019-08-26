@@ -28,7 +28,6 @@ public abstract class BaseFragment<P extends IMvpPresenter> extends Fragment imp
         if (presenter != null) {
             presenter.createView(this);
         }
-        init(view, savedInstanceState);
         //处理fragment重复出现的问题
         if (savedInstanceState != null) {
             boolean isSupportHidden = savedInstanceState.getBoolean(STATE_SAVE_IS_HIDDEN);
@@ -47,6 +46,12 @@ public abstract class BaseFragment<P extends IMvpPresenter> extends Fragment imp
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putBoolean(STATE_SAVE_IS_HIDDEN, isHidden());
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        init(view, savedInstanceState);
     }
 
     /**

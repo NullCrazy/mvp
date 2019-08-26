@@ -37,12 +37,12 @@ public abstract class BaseDialog extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         View view = inflater.inflate(R.layout.fragment_base_dialog, container, false);
-        mTextTitle = (TextView) view.findViewById(R.id.text_title);
-        mFrameContent = (FrameLayout) view.findViewById(R.id.frame_content);
-        mLinearBottom = (LinearLayout) view.findViewById(R.id.linear_bottom);
-        mTextConfirm = (TextView) view.findViewById(R.id.text_confirm);
-        mTextCancel = (TextView) view.findViewById(R.id.text_cancel);
-        mLinearTop = (LinearLayout) view.findViewById(R.id.linear_top);
+        mTextTitle = view.findViewById(R.id.text_title);
+        mFrameContent = view.findViewById(R.id.frame_content);
+        mLinearBottom = view.findViewById(R.id.linear_bottom);
+        mTextConfirm = view.findViewById(R.id.text_confirm);
+        mTextCancel = view.findViewById(R.id.text_cancel);
+        mLinearTop = view.findViewById(R.id.linear_top);
 
         mFrameContent.addView(getChildView());
 
