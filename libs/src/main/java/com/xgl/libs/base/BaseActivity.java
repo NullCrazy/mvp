@@ -120,12 +120,11 @@ public abstract class BaseActivity<P extends IMvpPresenter> extends AppCompatAct
         if (!toFragment.isAdded()) {
             fragmentTransaction.add(containerId, toFragment, clazzName);
         } else {
-            if (lastFragment != null) {
-                fragmentTransaction.hide(lastFragment);
-            }
             fragmentTransaction.show(toFragment);
         }
-
+        if (lastFragment != null) {
+            fragmentTransaction.hide(lastFragment);
+        }
         if (addBack) {
             fragmentTransaction.addToBackStack(clazzName).commitAllowingStateLoss();
         } else {
