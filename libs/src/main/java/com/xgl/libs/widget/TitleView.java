@@ -28,7 +28,8 @@ public class TitleView extends FrameLayout {
     private LinearLayout leftGroup;
     private LinearLayout rightGroup;
 
-    private OnClickTitleIconListener mOnClickTitleIconListener;
+    private OnClickLeftIconListener mOnClickLeftIconListener;
+    private OnClickRightIconListener mOnClickRightIconListener;
 
     public TitleView(Context context) {
         this(context, null);
@@ -71,8 +72,8 @@ public class TitleView extends FrameLayout {
         leftGroup.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mOnClickTitleIconListener != null) {
-                    mOnClickTitleIconListener.clickLeft(v);
+                if (mOnClickLeftIconListener != null) {
+                    mOnClickLeftIconListener.onClickLeft(v);
                 }
             }
         });
@@ -80,22 +81,61 @@ public class TitleView extends FrameLayout {
         rightGroup.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mOnClickTitleIconListener != null) {
-                    mOnClickTitleIconListener.clickRight(v);
+                if (mOnClickRightIconListener != null) {
+                    mOnClickRightIconListener.onClickRight(v);
                 }
             }
         });
     }
 
-    public void setOnClickTitleIconListener(OnClickTitleIconListener mOnClickTitleIconListener) {
-        this.mOnClickTitleIconListener = mOnClickTitleIconListener;
+    public TextView getTitle() {
+        return title;
     }
 
-    public interface OnClickTitleIconListener {
+    public void setTitle(String title) {
+        this.title.setText(title);
+    }
 
-        void clickLeft(View view);
+    public TextView getLeftTitle() {
+        return leftTitle;
+    }
 
-        void clickRight(View view);
+    public void setLeftTitle(String leftTitle) {
+        this.leftTitle.setText(leftTitle);
+    }
+
+    public TextView getRightTitle() {
+        return rightTitle;
+    }
+
+    public void setRightTitle(String rightTitle) {
+        this.rightTitle.setText(rightTitle);
+    }
+
+    public void setLeftTitleImage(int resId) {
+        this.leftTitleImage.setImageResource(resId);
+    }
+
+    public void setRightTitleImage(int resId) {
+        this.rightTitleImage.setImageResource(resId);
+    }
+
+    public void setmOnClickTitleIconListener(OnClickLeftIconListener onClickLeftIconListener) {
+        this.mOnClickLeftIconListener = onClickLeftIconListener;
+    }
+
+    public void setmOnClickRightIconListener(OnClickRightIconListener onClickRightIconListener) {
+        this.mOnClickRightIconListener = onClickRightIconListener;
+    }
+
+    public interface OnClickLeftIconListener {
+
+        void onClickLeft(View view);
+    }
+
+    public interface OnClickRightIconListener {
+
+        void onClickRight(View view);
     }
 
 }
