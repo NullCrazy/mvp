@@ -120,11 +120,11 @@ public class TitleView extends FrameLayout {
         this.rightTitleImage.setImageResource(resId);
     }
 
-    public void setmOnClickTitleIconListener(OnClickLeftIconListener onClickLeftIconListener) {
+    public void setOnClickTitleIconListener(OnClickLeftIconListener onClickLeftIconListener) {
         this.mOnClickLeftIconListener = onClickLeftIconListener;
     }
 
-    public void setmOnClickRightIconListener(OnClickRightIconListener onClickRightIconListener) {
+    public void setOnClickRightIconListener(OnClickRightIconListener onClickRightIconListener) {
         this.mOnClickRightIconListener = onClickRightIconListener;
     }
 
