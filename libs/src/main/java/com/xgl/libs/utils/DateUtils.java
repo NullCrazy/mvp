@@ -280,45 +280,35 @@ public final class DateUtils {
     public static String getMonthDayWeek(Date date) {
         Calendar c = Calendar.getInstance();
         c.setTime(date);
-        int year = c.get(Calendar.YEAR);    //获取年
-        int month = c.get(Calendar.MONTH) + 1;   //获取月份，0表示1月份
-        int day = c.get(Calendar.DAY_OF_MONTH);    //获取当前天数
         int week = c.get(Calendar.DAY_OF_WEEK);
-
-        String weekStr = null;
-
+        String weekStr;
         switch (week) {
-
             case Calendar.SUNDAY:
                 weekStr = "周日";
                 break;
-
             case Calendar.MONDAY:
                 weekStr = "周一";
                 break;
-
             case Calendar.TUESDAY:
                 weekStr = "周二";
                 break;
-
             case Calendar.WEDNESDAY:
                 weekStr = "周三";
                 break;
-
             case Calendar.THURSDAY:
                 weekStr = "周四";
                 break;
-
             case Calendar.FRIDAY:
                 weekStr = "周五";
                 break;
-
             case Calendar.SATURDAY:
                 weekStr = "周六";
                 break;
+            default:
+                weekStr = "";
+                break;
         }
-
-        return month + "月" + day + "日" + "(" + weekStr + ")";
+        return weekStr;
     }
 
     /**
