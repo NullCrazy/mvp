@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:background="@color/colorAccent"
         app:rightTitle="rightTest"
+        app:leftImage="@mipmap/icon_back"
         app:title="test" />
 
     <Button
