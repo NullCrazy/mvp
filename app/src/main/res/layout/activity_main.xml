@@ -8,10 +8,10 @@
     tools:context=".MainActivity">
 
     <com.xgl.libs.widget.TitleView
+        android:id="@+id/title_test"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorAccent"
-        app:leftTitle="leftTest"
         app:rightTitle="rightTest"
         app:title="test" />
 
