@@ -42,7 +42,6 @@ public class TitleView extends FrameLayout {
     public TitleView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initView(attrs);
-        initListener();
     }
 
     private void initView(AttributeSet attrs) {
@@ -66,26 +65,6 @@ public class TitleView extends FrameLayout {
         leftTitle.setTextSize(ta.getDimensionPixelSize(R.styleable.CustomTitleView_leftTitleSize, 18));
         rightTitle.setTextSize(ta.getDimensionPixelSize(R.styleable.CustomTitleView_rightTitleSize, 18));
         ta.recycle();
-    }
-
-    private void initListener() {
-        leftGroup.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mOnClickLeftIconListener != null) {
-                    mOnClickLeftIconListener.onClickLeft(v);
-                }
-            }
-        });
-
-        rightGroup.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mOnClickRightIconListener != null) {
-                    mOnClickRightIconListener.onClickRight(v);
-                }
-            }
-        });
     }
 
     public TextView getTitle() {
@@ -120,12 +99,24 @@ public class TitleView extends FrameLayout {
         this.rightTitleImage.setImageResource(resId);
     }
 
-    public void setOnClickTitleIconListener(OnClickLeftIconListener onClickLeftIconListener) {
+    public void setOnClickLeftIconListener(OnClickLeftIconListener onClickLeftIconListener) {
         this.mOnClickLeftIconListener = onClickLeftIconListener;
+        leftGroup.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mOnClickLeftIconListener.onClickLeft(v);
+            }
+        });
     }
 
     public void setOnClickRightIconListener(OnClickRightIconListener onClickRightIconListener) {
         this.mOnClickRightIconListener = onClickRightIconListener;
+        rightGroup.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mOnClickRightIconListener.onClickRight(v);
+            }
+        });
     }
 
     public interface OnClickLeftIconListener {
