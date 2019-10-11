@@ -23,6 +23,9 @@ public interface IMvpView {
     @UiThread
     void showLoading();
 
+    @UiThread
+    void showErrorView();
+
     /**
      * 隐藏等待框
      */
