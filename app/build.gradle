@@ -10,6 +10,12 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
+        manifestPlaceholders = [
+                //A64X37SWAIWV 属于应用"TEst"独有的 Android AppKey, 用于配置SDK
+                MTA_APPKEY:"A3FG95EH2MQJ",
+                //标注应用推广渠道用以区分新用户来源，可填写如应用宝，豌豆荚等
+                MTA_CHANNEL:"luckinBar"
+        ]
     }
 
     buildTypes {
